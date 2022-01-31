@@ -10,12 +10,7 @@ public class StudentFilter
     {
         StudentFilter student = new StudentFilter();
 
-        Student John = new Student(120, "John");
-        Student Martin = new Student(80, "Martin");
-        Student Sandra = new Student(150, "Sandra");
-        Student Imani = new Student(200, "Imani");
-
-        List<Student> students = Arrays.asList(John, Martin, Sandra, Imani);
+        List<Student> students = student.GetStudents();
 
         student.studentsWithHighScore = students
                 .stream()
@@ -24,6 +19,15 @@ public class StudentFilter
                 .toList();
 
         student.PrintHighScoreStudents();
+    }
+
+    private List<Student> GetStudents() {
+        Student John = new Student(120, "John");
+        Student Martin = new Student(80, "Martin");
+        Student Sandra = new Student(150, "Sandra");
+        Student Imani = new Student(200, "Imani");
+
+        return Arrays.asList(John, Martin, Sandra, Imani);
     }
 
     private void PrintHighScoreStudents()
