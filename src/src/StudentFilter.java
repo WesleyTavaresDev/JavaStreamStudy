@@ -4,8 +4,11 @@ import java.util.List;
 
 public class StudentFilter
 {
+    List<Student> studentsWithHighScore;
     public static void main(String[] args)
     {
+        StudentFilter student = new StudentFilter();
+
         Student John = new Student(120, "John");
         Student Martin = new Student(80, "Martin");
         Student Sandra = new Student(150, "Sandra");
@@ -13,14 +16,13 @@ public class StudentFilter
 
         List<Student> students = Arrays.asList(John, Martin, Sandra, Imani);
 
-        List<Student> studentsWithHighScore = students
+        student.studentsWithHighScore = students
                 .stream()
                 .filter(s -> s.GetScore() >= 100)
                 .sorted(Comparator.comparing(Student::GetScore).reversed())
                 .toList();
 
-        for(Student s : studentsWithHighScore)
-            System.out.printf("%s: %s. %n", s.GetName(), s.GetScore());
-
+        for(Student s : student.studentsWithHighScore)
+            System.out.printf("%s: %s. %n ", s.GetName(), s.GetScore());
     }
 }
