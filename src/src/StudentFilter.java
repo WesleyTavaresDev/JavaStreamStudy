@@ -5,6 +5,7 @@ import java.util.List;
 public class StudentFilter
 {
     List<Student> studentsWithHighScore;
+
     public static void main(String[] args)
     {
         StudentFilter student = new StudentFilter();
@@ -22,7 +23,12 @@ public class StudentFilter
                 .sorted(Comparator.comparing(Student::GetScore).reversed())
                 .toList();
 
-        for(Student s : student.studentsWithHighScore)
-            System.out.printf("%s: %s. %n ", s.GetName(), s.GetScore());
+        student.PrintHighScoreStudents();
+    }
+
+    private void PrintHighScoreStudents()
+    {
+        for(Student s : studentsWithHighScore)
+            System.out.printf("%s: %s. %n", s.GetName(), s.GetScore());
     }
 }
