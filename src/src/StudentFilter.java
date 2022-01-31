@@ -10,9 +10,7 @@ public class StudentFilter
     {
         StudentFilter student = new StudentFilter();
 
-        List<Student> students = student.GetStudents();
-
-        student.studentsWithHighScore = students
+        student.studentsWithHighScore = student.GetStudents()
                 .stream()
                 .filter(s -> s.GetScore() >= 100)
                 .sorted(Comparator.comparing(Student::GetScore).reversed())
