@@ -4,23 +4,33 @@ import java.util.List;
 
 public class StudentFilter
 {
+    List<Student> studentsWithHighScore;
+
     public static void main(String[] args)
     {
-        Student John = new Student(120, "John");
-        Student Martin = new Student(80, "Martin");
-        Student Sandra = new Student(150, "Sandra");
-        Student Imani = new Student(200, "Imani");
+        StudentFilter student = new StudentFilter();
 
-        List<Student> students = Arrays.asList(John, Martin, Sandra, Imani);
-
-        List<Student> studentsWithHighScore = students
+        student.studentsWithHighScore = student.GetStudents()
                 .stream()
                 .filter(s -> s.GetScore() >= 100)
                 .sorted(Comparator.comparing(Student::GetScore).reversed())
                 .toList();
 
+        student.PrintHighScoreStudents();
+    }
+
+    private List<Student> GetStudents() {
+        Student John = new Student(120, "John");
+        Student Martin = new Student(80, "Martin");
+        Student Sandra = new Student(150, "Sandra");
+        Student Imani = new Student(200, "Imani");
+
+        return Arrays.asList(John, Martin, Sandra, Imani);
+    }
+
+    private void PrintHighScoreStudents()
+    {
         for(Student s : studentsWithHighScore)
             System.out.printf("%s: %s. %n", s.GetName(), s.GetScore());
-
     }
 }
